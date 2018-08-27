@@ -1,0 +1,110 @@
+swagger: '2.0'
+info:
+  description: |
+  version: 1.0.0
+  title: Swagger Cadastro Pessoa
+tags:
+- name: pessoa
+  description: Requisições sobre objeto `pessoa`
+paths:
+  /pessoa:
+    post:
+      tags:
+      - pessoa
+      summary: Criar pessoa
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: pessoa
+        required: true
+        schema:
+          $ref: '#/definitions/Pessoa'
+      responses:
+        200:
+          description: Retorna objeto inserido
+          schema:
+            $ref: '#/definitions/Pessoa'
+    put:
+      tags:
+      - pessoa
+      summary: Alterar pessoa
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: pessoa
+        required: true
+        schema:
+          $ref: '#/definitions/Pessoa'
+      responses:
+        200:
+          description: Retorna objeto alterado
+          schema:
+            $ref: '#/definitions/Pessoa'
+    get:
+      tags:
+      - pessoa
+      summary: Retornar pessoa
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Lista de objetos.
+          schema:
+            $ref: '#/definitions/Pessoa'
+  /pessoa/{id}:
+    get:
+      tags:
+      - pessoa
+      summary: Retornar pessoa
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Lista de objetos.
+          schema:
+            $ref: '#/definitions/Pessoa'
+    delete:
+      tags:
+      - pessoa
+      summary: Deletar pessoa
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Sem retorno.
+
+definitions:
+  Pessoa:
+    type: object
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+      tipo:
+        type: string
+      uf:
+        type: string
+      cidade:
+        type: string
+      dataNascimento:
+        type: string
+
+# Added by API Auto Mocking Plugin
+host: projetos.carlostelles.xyz
+basePath: /cadastro-pessoas
+# Added by API Auto Mocking Plugin
+schemes:
+ - http

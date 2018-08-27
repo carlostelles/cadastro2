@@ -1,0 +1,54 @@
+<section id="extended">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="card-title">Pessoas</h4>
+            </div>
+            <div class="col-md-6">
+              <a class="btn btn-outline-primary float-right ml-1" (click)="logout()">
+                <i class="fa fa-power-off"></i>
+              </a>
+              <a class="btn btn-outline-primary float-right" href="pessoas/novo">
+                <i class="fa fa-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <table class="table table-responsive-md text-center">
+              <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Limite de Crédito</th>
+                <th>Risco</th>
+                <th>Taxa de Juros</th>
+                <th>Ações</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pessoa of pessoas">
+                  <td>{{pessoa.nome}}</td>
+                  <td>{{pessoa.limiteCredito | currencyformat}}</td>
+                  <td>{{pessoa.risco}}</td>
+                  <td>{{pessoa.taxaJuros}}%</td>
+                  <td>
+                    <a class="success p-0" href="/pessoas/{{pessoa.id}}/editar">
+                      <i class="fa fa-edit font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" (click)="trash(pessoa.id)">
+                      <i class="fa fa-trash-o font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

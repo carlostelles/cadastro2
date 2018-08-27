@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  # H2
+  h2:
+    console:
+      enable: true
+      path: /h2
+  # Datasource
+  datasource:
+    url: jdbc:h2:file:./db/test;INIT=CREATE SCHEMA IF NOT EXISTS PROD;
+    driverClassName: org.h2.Driver
+    username: app
+    password: app
+
+  # JPA
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_schema: prod
+
+  # Jackson
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+      INDENT_OUTPUT: true

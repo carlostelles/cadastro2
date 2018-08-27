@@ -1,0 +1,68 @@
+<!-- Wizard Starts -->
+<section id="icon-tabs">
+  <div class="row text-left">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="text-left">
+                <h4 class="card-title">
+                  <a class="mr-1 no-print" (click)="back()"><i class="fa fa-arrow-left position-right"></i></a>
+                  Cadastro
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <div class="card-body">
+              <div class="card-block">
+                <form class="icons-tab-steps wizard-circle" #f="ngForm" (submit)="onSubmit()">
+                  <fieldset [disabled]="disabledEdit">
+                    <input type="hidden" name="id" id="id" [value]="pessoa.id" [ngModel]="pessoa.id">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <label for="nome">Nome do cliente</label>
+                          <input type="text" class="form-control" id="nome" name="nome" [value]="pessoa.nome" [ngModel]="pessoa.nome">
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="risco">Risco</label>
+                          <select class="form-control" id="risco" name="risco" [ngModel]="pessoa.risco">
+                            <option [value]="risco['taxa']" *ngFor="let risco of riscos">{{risco['taxa']}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="limiteCredito">Limite de Crédito</label>
+                          <input type="text" class="form-control" id="limiteCredito" name="limiteCredito"
+                                 [ngModel]="pessoa.limiteCredito" currencyMask
+                                 [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row no-print">
+                      <div class="col-md-12">
+                        <div class="text-right">
+                          <button type="submit" class="btn btn-raised btn-primary mr-1">
+                            <i class="fa fa-check position-right"></i> Salvar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Wizard Ends -->
